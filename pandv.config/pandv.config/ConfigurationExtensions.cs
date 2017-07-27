@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Grpc.Core;
+using Microsoft.Extensions.Configuration;
 using System;
 
 namespace pandv.config
 {
     public static class ConfigurationExtensions
     {
-        public static IConfigurationBuilder AddFrom(this IConfigurationBuilder builder, string etcdAddress, string systemName, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddFrom(this IConfigurationBuilder builder, Channel channel, string systemName, bool optional, bool reloadOnChange)
         {
             if (builder == null)
             {
@@ -17,7 +18,7 @@ namespace pandv.config
             }
             return builder.AddFrom(s =>
             {
-                s.ETCDAddress = etcdAddress;
+                s.Channel = channel;
                 s.SystemName = systemName;
                 s.Optional = optional;
                 s.ReloadOnChange = reloadOnChange;

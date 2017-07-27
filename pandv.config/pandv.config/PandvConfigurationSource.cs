@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Grpc.Core;
+using Microsoft.Extensions.Configuration;
 
 namespace pandv.config
 {
@@ -7,7 +8,7 @@ namespace pandv.config
         public bool Optional { get; set; }
         public string SystemName { get; set; }
         public bool ReloadOnChange { get; set; }
-        public string ETCDAddress { get; internal set; }
+        public Channel Channel { get; internal set; }
 
         public IConfigurationProvider Build(IConfigurationBuilder builder)
         {
