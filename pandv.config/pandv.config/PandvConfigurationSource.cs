@@ -5,7 +5,6 @@ namespace pandv.config
 {
     public class PandvConfigurationSource : IConfigurationSource
     {
-        public bool Optional { get; set; }
         public string SystemName { get; set; }
         public bool ReloadOnChange { get; set; }
         public Channel Channel { get; internal set; }

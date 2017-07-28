@@ -6,7 +6,7 @@ namespace pandv.config
 {
     public static class ConfigurationExtensions
     {
-        public static IConfigurationBuilder AddFrom(this IConfigurationBuilder builder, Channel channel, string systemName, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder UsePandv(this IConfigurationBuilder builder, Channel channel, string systemName, bool reloadOnChange)
         {
             if (builder == null)
             {
@@ -16,16 +16,15 @@ namespace pandv.config
             {
                 throw new ArgumentNullException(nameof(systemName));
             }
-            return builder.AddFrom(s =>
+            return builder.UsePandv(s =>
             {
                 s.Channel = channel;
                 s.SystemName = systemName;
-                s.Optional = optional;
                 s.ReloadOnChange = reloadOnChange;
             });
         }
 
-        public static IConfigurationBuilder AddFrom(this IConfigurationBuilder builder, Action<PandvConfigurationSource> configureSource)
+        public static IConfigurationBuilder UsePandv(this IConfigurationBuilder builder, Action<PandvConfigurationSource> configureSource)
             => builder.Add(configureSource);
     }
 }
