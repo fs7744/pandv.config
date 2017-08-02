@@ -1,39 +1,36 @@
-﻿using Etcdserverpb;
+﻿using ETCD.V3;
+using Etcdserverpb;
 using Google.Protobuf;
 using Grpc.Core;
 using Microsoft.Extensions.Configuration;
 using System.Threading;
-using static Etcdserverpb.KV;
-using static Etcdserverpb.Watch;
 using static Mvccpb.Event.Types;
 
-namespace pandv.config
+namespace Pandv.Config
 {
-    internal class PandvConfigurationProvider : ConfigurationProvider
+    public class PandvConfigurationProvider : ConfigurationProvider
     {
-        private PandvConfigurationSource source;
-        private KVClient kv;
-        private AsyncDuplexStreamingCall<WatchRequest, WatchResponse> watch;
-        private CancellationToken cancellation = new CancellationToken();
+        private PandvConfigurationSource _Source;
+        private AsyncDuplexStreamingCall<WatchRequest, WatchResponse> _Watch;
+        private CancellationToken _Cancellation = new CancellationToken();
 
-        public PandvConfigurationProvider(PandvConfigurationSource pandvConfigurationSource)
+        public PandvConfigurationProvider(PandvConfigurationSource source)
         {
-            source = pandvConfigurationSource;
+            _Source = source;
         }
 
         public override void Load()
         {
-            kv = new KVClient(source.Channel);
-            var result = kv.Range(new RangeRequest()
+            var result = _Source.Client.KV.Range(new RangeRequest()
             {
-                Key = ByteString.CopyFromUtf8(source.SystemName),
-                RangeEnd = ByteString.CopyFromUtf8("\0")
+                Key = ByteString.CopyFromUtf8(_Source.SystemName),
+                RangeEnd = Constants.NullKey
             });
             foreach (var item in result.Kvs)
             {
                 Data.Add(ConfigurationPath.GetSectionKey(item.Key.ToStringUtf8()), item.Value.ToStringUtf8());
             }
-            if (source.ReloadOnChange)
+            if (_Source.ReloadOnChange)
             {
                 Watch();
             }
@@ -41,18 +38,18 @@ namespace pandv.config
 
         private async void Watch()
         {
-            watch = new WatchClient(source.Channel).Watch();
-            await watch.RequestStream.WriteAsync(new WatchRequest()
+            _Watch = _Source.Client.Watch.Watch();
+            await _Watch.RequestStream.WriteAsync(new WatchRequest()
             {
                 CreateRequest = new WatchCreateRequest()
                 {
-                    Key = ByteString.CopyFromUtf8(source.SystemName),
-                    RangeEnd = ByteString.CopyFromUtf8("\0")
+                    Key = ByteString.CopyFromUtf8(_Source.SystemName),
+                    RangeEnd = Constants.NullKey
                 }
             });
-            while (await watch.ResponseStream.MoveNext(cancellation))
+            while (await _Watch.ResponseStream.MoveNext(_Cancellation))
             {
-                var res = watch.ResponseStream.Current;
+                var res = _Watch.ResponseStream.Current;
                 foreach (var e in res.Events)
                 {
                     switch (e.Type)
@@ -76,9 +73,9 @@ namespace pandv.config
         public override void Set(string key, string value)
         {
             base.Set(key, value);
-            kv.Put(new PutRequest()
+            _Source.Client.KV.Put(new PutRequest()
             {
-                Key = ByteString.CopyFromUtf8(ConfigurationPath.Combine(source.SystemName, key)),
+                Key = ByteString.CopyFromUtf8(ConfigurationPath.Combine(_Source.SystemName, key)),
                 Value = ByteString.CopyFromUtf8(value)
             });
         }
