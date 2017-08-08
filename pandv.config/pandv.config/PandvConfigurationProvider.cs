@@ -12,10 +12,12 @@ namespace Pandv.Config
     {
         private PandvConfigurationSource _Source;
         private AsyncDuplexStreamingCall<WatchRequest, WatchResponse> _Watch;
+        private ByteString _AllKey = null;
 
         public PandvConfigurationProvider(PandvConfigurationSource source)
         {
             _Source = source;
+            _AllKey = ByteString.CopyFromUtf8(GenerateKey(string.Empty));
         }
 
         private string GenerateKey(string key)
@@ -30,7 +32,7 @@ namespace Pandv.Config
 
         public override void Load()
         {
-            var result = _Source.Client.GetAll(GenerateKey(string.Empty));
+            var result = _Source.Client.GetAll(_AllKey);
             foreach (var item in result.Kvs)
             {
                 Data.Add(GetUseKey(item.Key.ToStringUtf8()), item.Value.ToStringUtf8());
@@ -48,7 +50,7 @@ namespace Pandv.Config
             {
                 CreateRequest = new WatchCreateRequest()
                 {
-                    Key = ByteString.CopyFromUtf8(GenerateKey(string.Empty)),
+                    Key = _AllKey,
                     RangeEnd = Constants.NullKey
                 }
             });

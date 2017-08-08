@@ -12,7 +12,7 @@ namespace Test
             configTest.LoadConfiguration();
             configTest.SetConfiguration();
             configTest.LoadReloadConfiguration();
-            //configTest.SetReloadConfiguration();
+            configTest.SetReloadConfiguration();
         }
 
         static void Main(string[] args)
