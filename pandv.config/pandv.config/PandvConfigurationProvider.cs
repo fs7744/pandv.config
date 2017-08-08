@@ -52,7 +52,7 @@ namespace Pandv.Config
                     RangeEnd = Constants.NullKey
                 }
             });
-            while (await _Watch.ResponseStream.MoveNext(CancellationToken.None))
+            while (await _Watch.ResponseStream.MoveNext(CancellationToken.None).ConfigureAwait(false))
             {
                 var res = _Watch.ResponseStream.Current;
                 foreach (var e in res.Events)
@@ -64,7 +64,7 @@ namespace Pandv.Config
                     }
                     else
                     {
-                        Data.Remove(GetUseKey(e.Kv.Key.ToStringUtf8()));
+                        Data.Remove(key);
                     }
                 }
                 OnReload();

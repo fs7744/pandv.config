@@ -42,7 +42,7 @@ namespace Pandv.Config.Test
             var config = Fixture.BuildConfig("test", true);
             Assert.Null(config["test3"]);
             Fixture.Client.Put("config:test:test3", info);
-            Thread.Sleep(500);
+            Thread.Sleep(5000);
             Assert.Equal(info, config["test3"]);
             
         }
