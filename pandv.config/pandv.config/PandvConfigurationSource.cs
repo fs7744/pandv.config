@@ -7,7 +7,8 @@ namespace Pandv.Config
     {
         public string SystemName { get; set; }
         public bool ReloadOnChange { get; set; }
-        public Client Client { get; internal set; }
+        public Client Client { get; set; }
+        public string RootPath { get; set; }
 
         public IConfigurationProvider Build(IConfigurationBuilder builder)
         {

@@ -19,16 +19,22 @@ namespace Pandv.Config
             _Source = source;
         }
 
+        private string GenerateKey(string key)
+        {
+            return ConfigurationPath.Combine(_Source.RootPath, _Source.SystemName, key);
+        }
+
+        private string GetUseKey(string key)
+        {
+            return ConfigurationPath.GetSectionKey(key);
+        }
+
         public override void Load()
         {
-            var result = _Source.Client.KV.Range(new RangeRequest()
-            {
-                Key = ByteString.CopyFromUtf8(_Source.SystemName),
-                RangeEnd = Constants.NullKey
-            });
+            var result = _Source.Client.GetAll(_Source.SystemName);
             foreach (var item in result.Kvs)
             {
-                Data.Add(ConfigurationPath.GetSectionKey(item.Key.ToStringUtf8()), item.Value.ToStringUtf8());
+                Data.Add(GetUseKey(item.Key.ToStringUtf8()), item.Value.ToStringUtf8());
             }
             if (_Source.ReloadOnChange)
             {
@@ -38,12 +44,12 @@ namespace Pandv.Config
 
         private async void Watch()
         {
-            _Watch = _Source.Client.Watch.Watch();
+            _Watch = _Source.Client.Watch();
             await _Watch.RequestStream.WriteAsync(new WatchRequest()
             {
                 CreateRequest = new WatchCreateRequest()
                 {
-                    Key = ByteString.CopyFromUtf8(_Source.SystemName),
+                    Key = ByteString.CopyFromUtf8(GenerateKey("")),
                     RangeEnd = Constants.NullKey
                 }
             });
@@ -52,18 +58,14 @@ namespace Pandv.Config
                 var res = _Watch.ResponseStream.Current;
                 foreach (var e in res.Events)
                 {
-                    switch (e.Type)
+                    var key = GetUseKey(e.Kv.Key.ToStringUtf8());
+                    if (e.Type == EventType.Put)
                     {
-                        case EventType.Put:
-                            Data[e.Kv.Key.ToStringUtf8()] = e.Kv.Value.ToStringUtf8();
-                            break;
-
-                        case EventType.Delete:
-                            Data.Remove(e.Kv.Key.ToStringUtf8());
-                            break;
-
-                        default:
-                            break;
+                        Data[key] = e.Kv.Value.ToStringUtf8();
+                    }
+                    else
+                    {
+                        Data.Remove(GetUseKey(e.Kv.Key.ToStringUtf8()));
                     }
                 }
                 OnReload();
@@ -73,11 +75,7 @@ namespace Pandv.Config
         public override void Set(string key, string value)
         {
             base.Set(key, value);
-            _Source.Client.KV.Put(new PutRequest()
-            {
-                Key = ByteString.CopyFromUtf8(ConfigurationPath.Combine(_Source.SystemName, key)),
-                Value = ByteString.CopyFromUtf8(value)
-            });
+            _Source.Client.Put(GenerateKey(key), value);
         }
     }
 }

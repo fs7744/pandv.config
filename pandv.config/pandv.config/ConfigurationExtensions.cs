@@ -7,7 +7,7 @@ namespace Pandv.Config
     public static class ConfigurationExtensions
     {
         public static IConfigurationBuilder UsePandv(this IConfigurationBuilder builder, string systemName,
-            bool reloadOnChange, string target, string user = null, string pwd = null)
+            bool reloadOnChange, string target, string user = null, string pwd = null, string rootPath = "config")
         {
             if (builder == null)
             {
@@ -19,8 +19,10 @@ namespace Pandv.Config
             }
             return builder.UsePandv(s =>
             {
-                s.Client = new Client(target, user, pwd);
+                s.Client = new Client(target);
+                s.Client.NewAuthToken(user, pwd);
                 s.SystemName = systemName;
+                s.RootPath = rootPath;
                 s.ReloadOnChange = reloadOnChange;
             });
         }
