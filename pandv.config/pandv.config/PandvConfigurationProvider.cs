@@ -12,7 +12,6 @@ namespace Pandv.Config
     {
         private PandvConfigurationSource _Source;
         private AsyncDuplexStreamingCall<WatchRequest, WatchResponse> _Watch;
-        private CancellationToken _Cancellation = new CancellationToken();
 
         public PandvConfigurationProvider(PandvConfigurationSource source)
         {
@@ -31,7 +30,7 @@ namespace Pandv.Config
 
         public override void Load()
         {
-            var result = _Source.Client.GetAll(_Source.SystemName);
+            var result = _Source.Client.GetAll(GenerateKey(string.Empty));
             foreach (var item in result.Kvs)
             {
                 Data.Add(GetUseKey(item.Key.ToStringUtf8()), item.Value.ToStringUtf8());
@@ -49,11 +48,11 @@ namespace Pandv.Config
             {
                 CreateRequest = new WatchCreateRequest()
                 {
-                    Key = ByteString.CopyFromUtf8(GenerateKey("")),
+                    Key = ByteString.CopyFromUtf8(GenerateKey(string.Empty)),
                     RangeEnd = Constants.NullKey
                 }
             });
-            while (await _Watch.ResponseStream.MoveNext(_Cancellation))
+            while (await _Watch.ResponseStream.MoveNext(CancellationToken.None))
             {
                 var res = _Watch.ResponseStream.Current;
                 foreach (var e in res.Events)
@@ -75,7 +74,10 @@ namespace Pandv.Config
         public override void Set(string key, string value)
         {
             base.Set(key, value);
-            _Source.Client.Put(GenerateKey(key), value);
+            if (_Source.ReloadOnChange)
+            {
+                _Source.Client.Put(GenerateKey(key), value);
+            }
         }
     }
 }
