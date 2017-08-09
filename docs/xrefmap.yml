@@ -1,0 +1,144 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Pandv.Config
+  name: Pandv.Config
+  href: api/Pandv.Config.html
+  commentId: N:Pandv.Config
+  fullName: Pandv.Config
+  nameWithType: Pandv.Config
+- uid: Pandv.Config.ConfigurationExtensions
+  name: ConfigurationExtensions
+  href: api/Pandv.Config.ConfigurationExtensions.html
+  commentId: T:Pandv.Config.ConfigurationExtensions
+  fullName: Pandv.Config.ConfigurationExtensions
+  nameWithType: ConfigurationExtensions
+- uid: Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.Action{Pandv.Config.PandvConfigurationSource})
+  name: UsePandv(IConfigurationBuilder, Action<PandvConfigurationSource>)
+  href: api/Pandv.Config.ConfigurationExtensions.html#Pandv_Config_ConfigurationExtensions_UsePandv_IConfigurationBuilder_System_Action_Pandv_Config_PandvConfigurationSource__
+  commentId: M:Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.Action{Pandv.Config.PandvConfigurationSource})
+  name.vb: UsePandv(IConfigurationBuilder, Action(Of PandvConfigurationSource))
+  fullName: Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder, System.Action<Pandv.Config.PandvConfigurationSource>)
+  fullName.vb: Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder, System.Action(Of Pandv.Config.PandvConfigurationSource))
+  nameWithType: ConfigurationExtensions.UsePandv(IConfigurationBuilder, Action<PandvConfigurationSource>)
+  nameWithType.vb: ConfigurationExtensions.UsePandv(IConfigurationBuilder, Action(Of PandvConfigurationSource))
+- uid: Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.String,System.Boolean,System.String,System.String,System.String,System.String)
+  name: UsePandv(IConfigurationBuilder, String, Boolean, String, String, String, String)
+  href: api/Pandv.Config.ConfigurationExtensions.html#Pandv_Config_ConfigurationExtensions_UsePandv_IConfigurationBuilder_System_String_System_Boolean_System_String_System_String_System_String_System_String_
+  commentId: M:Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.String,System.Boolean,System.String,System.String,System.String,System.String)
+  fullName: Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder, System.String, System.Boolean, System.String, System.String, System.String, System.String)
+  nameWithType: ConfigurationExtensions.UsePandv(IConfigurationBuilder, String, Boolean, String, String, String, String)
+- uid: Pandv.Config.ConfigurationExtensions.UsePandv*
+  name: UsePandv
+  href: api/Pandv.Config.ConfigurationExtensions.html#Pandv_Config_ConfigurationExtensions_UsePandv_
+  commentId: Overload:Pandv.Config.ConfigurationExtensions.UsePandv
+  fullName: Pandv.Config.ConfigurationExtensions.UsePandv
+  nameWithType: ConfigurationExtensions.UsePandv
+- uid: Pandv.Config.PandvConfigurationProvider
+  name: PandvConfigurationProvider
+  href: api/Pandv.Config.PandvConfigurationProvider.html
+  commentId: T:Pandv.Config.PandvConfigurationProvider
+  fullName: Pandv.Config.PandvConfigurationProvider
+  nameWithType: PandvConfigurationProvider
+- uid: Pandv.Config.PandvConfigurationProvider.#ctor(Pandv.Config.PandvConfigurationSource)
+  name: PandvConfigurationProvider(PandvConfigurationSource)
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider__ctor_Pandv_Config_PandvConfigurationSource_
+  commentId: M:Pandv.Config.PandvConfigurationProvider.#ctor(Pandv.Config.PandvConfigurationSource)
+  fullName: Pandv.Config.PandvConfigurationProvider.PandvConfigurationProvider(Pandv.Config.PandvConfigurationSource)
+  nameWithType: PandvConfigurationProvider.PandvConfigurationProvider(PandvConfigurationSource)
+- uid: Pandv.Config.PandvConfigurationProvider.#ctor*
+  name: PandvConfigurationProvider
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider__ctor_
+  commentId: Overload:Pandv.Config.PandvConfigurationProvider.#ctor
+  fullName: Pandv.Config.PandvConfigurationProvider.PandvConfigurationProvider
+  nameWithType: PandvConfigurationProvider.PandvConfigurationProvider
+- uid: Pandv.Config.PandvConfigurationProvider.Load
+  name: Load()
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider_Load
+  commentId: M:Pandv.Config.PandvConfigurationProvider.Load
+  fullName: Pandv.Config.PandvConfigurationProvider.Load()
+  nameWithType: PandvConfigurationProvider.Load()
+- uid: Pandv.Config.PandvConfigurationProvider.Load*
+  name: Load
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider_Load_
+  commentId: Overload:Pandv.Config.PandvConfigurationProvider.Load
+  fullName: Pandv.Config.PandvConfigurationProvider.Load
+  nameWithType: PandvConfigurationProvider.Load
+- uid: Pandv.Config.PandvConfigurationProvider.Set(System.String,System.String)
+  name: Set(String, String)
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider_Set_System_String_System_String_
+  commentId: M:Pandv.Config.PandvConfigurationProvider.Set(System.String,System.String)
+  fullName: Pandv.Config.PandvConfigurationProvider.Set(System.String, System.String)
+  nameWithType: PandvConfigurationProvider.Set(String, String)
+- uid: Pandv.Config.PandvConfigurationProvider.Set*
+  name: Set
+  href: api/Pandv.Config.PandvConfigurationProvider.html#Pandv_Config_PandvConfigurationProvider_Set_
+  commentId: Overload:Pandv.Config.PandvConfigurationProvider.Set
+  fullName: Pandv.Config.PandvConfigurationProvider.Set
+  nameWithType: PandvConfigurationProvider.Set
+- uid: Pandv.Config.PandvConfigurationSource
+  name: PandvConfigurationSource
+  href: api/Pandv.Config.PandvConfigurationSource.html
+  commentId: T:Pandv.Config.PandvConfigurationSource
+  fullName: Pandv.Config.PandvConfigurationSource
+  nameWithType: PandvConfigurationSource
+- uid: Pandv.Config.PandvConfigurationSource.Build(IConfigurationBuilder)
+  name: Build(IConfigurationBuilder)
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_Build_IConfigurationBuilder_
+  commentId: M:Pandv.Config.PandvConfigurationSource.Build(IConfigurationBuilder)
+  fullName: Pandv.Config.PandvConfigurationSource.Build(IConfigurationBuilder)
+  nameWithType: PandvConfigurationSource.Build(IConfigurationBuilder)
+- uid: Pandv.Config.PandvConfigurationSource.Build*
+  name: Build
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_Build_
+  commentId: Overload:Pandv.Config.PandvConfigurationSource.Build
+  fullName: Pandv.Config.PandvConfigurationSource.Build
+  nameWithType: PandvConfigurationSource.Build
+- uid: Pandv.Config.PandvConfigurationSource.Client
+  name: Client
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_Client
+  commentId: P:Pandv.Config.PandvConfigurationSource.Client
+  fullName: Pandv.Config.PandvConfigurationSource.Client
+  nameWithType: PandvConfigurationSource.Client
+- uid: Pandv.Config.PandvConfigurationSource.Client*
+  name: Client
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_Client_
+  commentId: Overload:Pandv.Config.PandvConfigurationSource.Client
+  fullName: Pandv.Config.PandvConfigurationSource.Client
+  nameWithType: PandvConfigurationSource.Client
+- uid: Pandv.Config.PandvConfigurationSource.ReloadOnChange
+  name: ReloadOnChange
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_ReloadOnChange
+  commentId: P:Pandv.Config.PandvConfigurationSource.ReloadOnChange
+  fullName: Pandv.Config.PandvConfigurationSource.ReloadOnChange
+  nameWithType: PandvConfigurationSource.ReloadOnChange
+- uid: Pandv.Config.PandvConfigurationSource.ReloadOnChange*
+  name: ReloadOnChange
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_ReloadOnChange_
+  commentId: Overload:Pandv.Config.PandvConfigurationSource.ReloadOnChange
+  fullName: Pandv.Config.PandvConfigurationSource.ReloadOnChange
+  nameWithType: PandvConfigurationSource.ReloadOnChange
+- uid: Pandv.Config.PandvConfigurationSource.RootPath
+  name: RootPath
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_RootPath
+  commentId: P:Pandv.Config.PandvConfigurationSource.RootPath
+  fullName: Pandv.Config.PandvConfigurationSource.RootPath
+  nameWithType: PandvConfigurationSource.RootPath
+- uid: Pandv.Config.PandvConfigurationSource.RootPath*
+  name: RootPath
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_RootPath_
+  commentId: Overload:Pandv.Config.PandvConfigurationSource.RootPath
+  fullName: Pandv.Config.PandvConfigurationSource.RootPath
+  nameWithType: PandvConfigurationSource.RootPath
+- uid: Pandv.Config.PandvConfigurationSource.SystemName
+  name: SystemName
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_SystemName
+  commentId: P:Pandv.Config.PandvConfigurationSource.SystemName
+  fullName: Pandv.Config.PandvConfigurationSource.SystemName
+  nameWithType: PandvConfigurationSource.SystemName
+- uid: Pandv.Config.PandvConfigurationSource.SystemName*
+  name: SystemName
+  href: api/Pandv.Config.PandvConfigurationSource.html#Pandv_Config_PandvConfigurationSource_SystemName_
+  commentId: Overload:Pandv.Config.PandvConfigurationSource.SystemName
+  fullName: Pandv.Config.PandvConfigurationSource.SystemName
+  nameWithType: PandvConfigurationSource.SystemName
