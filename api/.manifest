@@ -1,0 +1,16 @@
+{
+  "Pandv.Config": "Pandv.Config.yml",
+  "Pandv.Config.ConfigurationExtensions": "Pandv.Config.ConfigurationExtensions.yml",
+  "Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.Action{Pandv.Config.PandvConfigurationSource})": "Pandv.Config.ConfigurationExtensions.yml",
+  "Pandv.Config.ConfigurationExtensions.UsePandv(IConfigurationBuilder,System.String,System.Boolean,System.String,System.String,System.String,System.String)": "Pandv.Config.ConfigurationExtensions.yml",
+  "Pandv.Config.PandvConfigurationProvider": "Pandv.Config.PandvConfigurationProvider.yml",
+  "Pandv.Config.PandvConfigurationProvider.#ctor(Pandv.Config.PandvConfigurationSource)": "Pandv.Config.PandvConfigurationProvider.yml",
+  "Pandv.Config.PandvConfigurationProvider.Load": "Pandv.Config.PandvConfigurationProvider.yml",
+  "Pandv.Config.PandvConfigurationProvider.Set(System.String,System.String)": "Pandv.Config.PandvConfigurationProvider.yml",
+  "Pandv.Config.PandvConfigurationSource": "Pandv.Config.PandvConfigurationSource.yml",
+  "Pandv.Config.PandvConfigurationSource.Build(IConfigurationBuilder)": "Pandv.Config.PandvConfigurationSource.yml",
+  "Pandv.Config.PandvConfigurationSource.Client": "Pandv.Config.PandvConfigurationSource.yml",
+  "Pandv.Config.PandvConfigurationSource.ReloadOnChange": "Pandv.Config.PandvConfigurationSource.yml",
+  "Pandv.Config.PandvConfigurationSource.RootPath": "Pandv.Config.PandvConfigurationSource.yml",
+  "Pandv.Config.PandvConfigurationSource.SystemName": "Pandv.Config.PandvConfigurationSource.yml"
+}
